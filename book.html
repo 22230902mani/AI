@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment | ResearchHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #6C63FF;
+      --secondary-color: #00C9FF;
+      --accent-color: #92FE9D;
+      --dark-color: #2c3e50;
+      --light-color: #f9f9f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f9f9f9, #e0f7fa);
+      color: var(--dark-color);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    nav {
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      padding: 15px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .booking-section {
+      padding: 60px 0;
+    }
+
+    .booking-wrapper {
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    .booking-wrapper h2 {
+      margin-bottom: 30px;
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .booking-steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 10px;
+    }
+
+    .step {
+      flex: 1;
+      padding: 12px 15px;
+      background: #dfe6e9;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      color: #636e72;
+      transition: 0.3s;
+    }
+
+    .step.active {
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .booking-form .form-group {
+      margin-bottom: 30px;
+    }
+
+    .expert-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .expert-card {
+      flex: 1;
+      min-width: 250px;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      border: 2px solid transparent;
+    }
+
+    .expert-card:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+    }
+
+    .expert-card.selected {
+      border: 2px solid var(--primary-color);
+      background: linear-gradient(145deg, #d1c4e9, #ffffff);
+    }
+
+    .expert-card img {
+      border-radius: 50%;
+      margin-bottom: 10px;
+      width: 80px;
+      height: 80px;
+    }
+
+    .expert-card h4 {
+      margin-bottom: 8px;
+      color: var(--primary-color);
+    }
+
+    .expert-card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .expert-card input[type="radio"] {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      transform: scale(1.2);
+    }
+
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .input-group input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .datetime-picker {
+      display: flex;
+      gap: 20px;
+    }
+
+    .datetime-picker input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    }
+
+    .btn-icon {
+      font-size: 1.3rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .booking-steps {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .expert-grid {
+        flex-direction: column;
+      }
+
+      .input-group, .datetime-picker {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">ResearchHub</a>
+      <div class="nav-links">
+        <a href="index1.html">Home</a>
+        <a href="collabrators.html">Collaborators</a>
+        <a href="book.html">Book</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="booking-section">
+    <div class="container">
+      <div class="booking-wrapper">
+        <h2>Schedule Research Collaboration</h2>
+
+        <div class="booking-steps">
+          <div class="step active">1. Choose Expert</div>
+          <div class="step">2. Pick Time</div>
+          <div class="step">3. Confirm</div>
+        </div>
+
+        <form action="book.php" method="POST" class="booking-form">
+          <div class="form-group">
+            <label>Select Collaborator:</label>
+            <div class="expert-grid">
+              <div class="expert-card selected">
+                <img src="https://via.placeholder.com/80" alt="Dr. Sarah Johnson">
+                <h4>Dr. Sarah Johnson</h4>
+                <p>AI Research · MIT</p>
+                <input type="radio" name="collaborator" value="Dr. Sarah Johnson" checked>
+              </div>
+              <div class="expert-card">
+                <img src="https://via.placeholder.com/80" alt="Dr. Michael Chen">
+                <h4>Dr. Michael Chen</h4>
+                <p>Biotech · Stanford</p>
+                <input type="radio" name="collaborator" value="Dr. Michael Chen">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Your Information:</label>
+            <div class="input-group">
+              <input type="text" name="name" placeholder="Full Name" required>
+              <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Select Date & Time:</label>
+            <div class="datetime-picker">
+              <input type="date" name="date" required>
+              <input type="time" name="time" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Meeting Purpose:</label>
+            <textarea name="purpose" rows="4" placeholder="Briefly describe your collaboration request..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn primary">
+            <span class="btn-icon">📅</span> Confirm Booking
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

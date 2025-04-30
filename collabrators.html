@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Collaborators | ResearchHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #2A5C82;
+      --secondary-color: #4CAF50;
+      --accent-color: #6C63FF;
+      --text-color: #333;
+      --bg-light: #f8f9fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: var(--text-color);
+      background: linear-gradient(120deg, #f8f9fa, #e0f7fa);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    nav {
+      background: linear-gradient(to right, #2A5C82, #6C63FF);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      float: right;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      margin-left: 2rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    .collab-search {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e0f7fa 50%, #e1bee7 100%);
+    }
+
+    .collab-search h2 {
+      text-align: center;
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 2.5rem;
+      background: linear-gradient(to right, #2A5C82, #6C63FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .search-filter {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .search-filter input,
+    .search-filter select {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 1rem;
+      background: white;
+      transition: 0.3s ease;
+    }
+
+    .search-filter input:focus,
+    .search-filter select:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 10px rgba(108,99,255,0.3);
+      outline: none;
+    }
+
+    .collab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .collab-card {
+      background: linear-gradient(145deg, #ffffff, #f1f1f1);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .collab-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .collab-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      border: 3px solid var(--primary-color);
+    }
+
+    .collab-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .collab-card p {
+      color: #666;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .expertise {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .expertise span {
+      background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .availability {
+      margin-top: 1.2rem;
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(to right, #2A5C82, #6C63FF);
+      border-radius: 8px;
+      color: white;
+      display: inline-block;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .collab-search {
+        padding: 3rem 0;
+      }
+
+      .search-filter {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .collab-card {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .collab-search h2 {
+        font-size: 2.2rem;
+      }
+
+      .collab-card img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">ResearchHub</a>
+      <div class="nav-links">
+        <a href="index1.html">Home</a>
+        <a href="collabrators.html">Collaborators</a>
+        <a href="book.html">Book</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="collab-search">
+    <div class="container">
+      <h2>Find Research Collaborators</h2>
+      <div class="search-filter">
+        <input type="text" placeholder="Search by name, expertise, or institution...">
+        <select id="field-filter">
+          <option value="">All Research Fields</option>
+          <option>Artificial Intelligence</option>
+          <option>Biotechnology</option>
+          <option>Climate Science</option>
+          <option>Quantum Computing</option>
+          <option>Neuroscience</option>
+        </select>
+      </div>
+
+      <div class="collab-grid">
+        <!-- Collaborator Cards -->
+        <div class="collab-card">
+          <img src="aiml1.jpeg" alt="Dr. Emily Zhang">
+          <h3>Dr. Emily Zhang</h3>
+          <p>AI Research · Stanford University</p>
+          <div class="expertise">
+            <span>Machine Learning</span>
+            <span>Neural Networks</span>
+            <span>Computer Vision</span>
+          </div>
+          <div class="availability">Available for Collaboration</div>
+        </div>
+
+        <div class="collab-card">
+          <img src="aiml2.jpeg" alt="Prof. Michael Chen">
+          <h3>Prof. Michael Chen</h3>
+          <p>Biotechnology · MIT</p>
+          <div class="expertise">
+            <span>CRISPR</span>
+            <span>Gene Editing</span>
+            <span>Synthetic Biology</span>
+          </div>
+          <div class="availability">Available for Collaboration</div>
+        </div>
+
+        <div class="collab-card">
+          <img src="aiml3.jpeg" alt="Dr. Sarah Johnson">
+          <h3>Dr. Sarah Johnson</h3>
+          <p>Climate Science · Oxford University</p>
+          <div class="expertise">
+            <span>Climate Modeling</span>
+            <span>Carbon Capture</span>
+            <span>Renewable Energy</span>
+          </div>
+          <div class="availability">Available for Collaboration</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

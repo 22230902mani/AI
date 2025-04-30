@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment | ResearchHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #2A5C82;
+      --secondary-color: #4CAF50;
+      --text-color: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: var(--text-color);
+      background: linear-gradient(-45deg, #6a11cb, #2575fc, #6a11cb, #2575fc);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      padding: 1rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    .appointment-form {
+      padding: 5rem 0;
+    }
+
+    .appointment-form h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .appointment-form h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--secondary-color);
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    form {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    form:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .form-group {
+      margin-bottom: 2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      background: rgba(255,255,255,0.3);
+      outline: none;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn.primary {
+      background: var(--secondary-color);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn.primary:hover {
+      background: #45a049;
+      transform: scale(1.05);
+      box-shadow: 0 5px 20px rgba(76,175,80,0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        margin-top: 1rem;
+      }
+      .appointment-form {
+        padding: 3rem 0;
+      }
+      form {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .appointment-form h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="particles-js"></div>
+
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">ResearchHub</a>
+      <div class="nav-links">
+        <a href="index1.html">Home</a>
+        <a href="collabrators.html">Collaborators</a>
+        <a href="book.html">Book</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="appointment-form">
+    <div class="container">
+      <h2>Book Appointment</h2>
+      <form action="book.php" method="POST">
+        <div class="form-group">
+          <label>Select Collaborator:</label>
+          <select name="collaborator" required>
+            <option value="">Choose a Collaborator</option>
+            <option value="Dr. Sarah Johnson">Dr. Sarah Johnson - AI Research</option>
+            <option value="Dr. Michael Chen">Dr. Michael Chen - Biotechnology</option>
+            <option value="Dr. Emily Zhang">Dr. Emily Zhang - Climate Science</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Your Name:</label>
+          <input type="text" name="name" placeholder="John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label>Your Email:</label>
+          <input type="email" name="email" placeholder="john@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Appointment Date:</label>
+          <input type="date" name="date" required>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Time:</label>
+          <input type="time" name="time" required>
+        </div>
+
+        <div class="form-group">
+          <label>Meeting Purpose:</label>
+          <textarea name="purpose" placeholder="Briefly describe the purpose of the meeting..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn primary">Book Now</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Particles.js library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 }},
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3 },
+        "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 3 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
